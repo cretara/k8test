@@ -13,6 +13,7 @@ public class BaseController {
 
     @GetMapping("/")
     public String hello() {
+        log.info("hello");
         return "FUNZIONA!";
     }
 
