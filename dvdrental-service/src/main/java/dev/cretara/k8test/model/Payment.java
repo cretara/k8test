@@ -1,10 +1,15 @@
 package dev.cretara.k8test.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "payment")
 public class Payment {
     @Id
@@ -29,52 +34,15 @@ public class Payment {
     @Column(name = "payment_date", nullable = false)
     private Instant paymentDate;
 
-    public Integer getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", staff=" + staff +
+                ", rental=" + rental +
+                ", amount=" + amount +
+                ", paymentDate=" + paymentDate +
+                '}';
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Staff getStaff() {
-        return staff;
-    }
-
-    public void setStaff(Staff staff) {
-        this.staff = staff;
-    }
-
-    public Rental getRental() {
-        return rental;
-    }
-
-    public void setRental(Rental rental) {
-        this.rental = rental;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public Instant getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(Instant paymentDate) {
-        this.paymentDate = paymentDate;
-    }
-
 }

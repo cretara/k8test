@@ -1,5 +1,8 @@
 package dev.cretara.k8test.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +10,8 @@ import javax.persistence.Table;
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "language")
 public class Language {
     @Id
@@ -19,28 +24,12 @@ public class Language {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    public Integer getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Language{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Instant getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Instant lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
 }

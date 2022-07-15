@@ -1,9 +1,14 @@
 package dev.cretara.k8test.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "film_category")
 public class FilmCategory {
     @EmbeddedId
@@ -22,36 +27,13 @@ public class FilmCategory {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-    public FilmCategoryId getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "FilmCategory{" +
+                "id=" + id +
+                ", film=" + film +
+                ", category=" + category +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
-
-    public void setId(FilmCategoryId id) {
-        this.id = id;
-    }
-
-    public Film getFilm() {
-        return film;
-    }
-
-    public void setFilm(Film film) {
-        this.film = film;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Instant getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Instant lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
 }
