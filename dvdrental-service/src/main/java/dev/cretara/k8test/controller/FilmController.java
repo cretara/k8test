@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
-@RequestMapping("api/films")
+@RequestMapping("api/v1/films")
 @Slf4j
 public class FilmController {
 

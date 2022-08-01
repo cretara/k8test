@@ -13,7 +13,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,8 +30,11 @@ public class FilmServiceImpl implements IFilmService {
                 .stream()
                 .map(singleFilm -> FilmDTO.builder()
                                           .id(singleFilm.getId())
+                                          .title(singleFilm.getTitle())
+                                          .description(singleFilm.getDescription())
+                                          .releaseYear(singleFilm.getReleaseYear())
                                           .build())
-                .collect(Collectors.toList());
+                .toList();
     }
 
 }

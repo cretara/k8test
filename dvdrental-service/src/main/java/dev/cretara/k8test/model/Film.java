@@ -1,14 +1,17 @@
 package dev.cretara.k8test.model;
 
+import com.vladmihalcea.hibernate.type.array.ListArrayType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,6 +19,10 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "film")
+@TypeDef(
+        name = "list-array",
+        typeClass = ListArrayType.class
+)
 public class Film {
     @Id
     @Column(name = "film_id", nullable = false)
@@ -50,23 +57,14 @@ public class Film {
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
 
-
-/*
-    TODO [JPA Buddy] create field to map the 'rating' column
-     Available actions: Define target Java type | Uncomment as is | Remove column mapping
     @Column(name = "rating", columnDefinition = "mpaa_rating")
-    private Object rating;
-*/
-/*
-    TODO [JPA Buddy] create field to map the 'special_features' column
-     Available actions: Define target Java type | Uncomment as is | Remove column mapping
-    @Column(name = "special_features", columnDefinition = "text[]")
-    private Object specialFeatures;
-*/
-/*
-    TODO [JPA Buddy] create field to map the 'fulltext' column
-     Available actions: Define target Java type | Uncomment as is | Remove column mapping
-    @Column(name = "fulltext", columnDefinition = "tsvector not null")
-    private Object fulltext;
-*/
+    private String rating;
+
+    @Type(type = "list-array")
+    @Column(
+            name = "special_features",
+            columnDefinition = "text[]"
+    )
+    private List<String> specialFeatures;
+
 }
