@@ -33,3 +33,4 @@ build/
 /.idea/
 /mvnw.cmd
 /database/entityManagerFactory(EntityManagerFactoryBuilder).drawio
+/logs/

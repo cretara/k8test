@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dev.cretara</groupId>
-    <artifactId>k8test</artifactId>
-    <version>0.0.1</version>
-    <name>k8test</name>
-    <description>k8test</description>
+    <artifactId>dvdrental-service</artifactId>
+    <version>1.0.0</version>
+    <name>dvdrental-service</name>
+    <description>dvdrental-service</description>
     <properties>
         <java.version>17</java.version>
     </properties>
