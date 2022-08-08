@@ -1,7 +1,21 @@
 version: '1'
 services:
+  dvdrental-service-database:
+    image: postgres:14.4-alpine
+    container_name: dvdrental-database
+    restart: always
+    environment:
+      - POSTGRES_USER=dvdrentaluser
+      - POSTGRES_PASSWORD=dvdrentalpassword
+      - POSTGRES_DB=dvdrental
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - dvdrental-service-network
   dvdrental-server:
-    container_name: dvdrental-service
+    container_name: dvdrental-service-compose
     build:
       context: docker-dvdrental-service
       dockerfile: Dockerfile
@@ -10,21 +24,11 @@ services:
       - 8087:8087
     networks:
       - dvdrental-service-network
-  dvdrental-service-database:
-    image: postgres:14.4-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - 5432:5432
-    volumes:
-      - db:/var/lib/postgresql/data
-    networks:
-      - dvdrental-service-network
+    depends_on:
+      - dvdrental-service-database
 volumes:
   db:
     driver: local
 networks:
-  spring-cloud-network:
+  dvdrental-service-network:
     driver: bridge

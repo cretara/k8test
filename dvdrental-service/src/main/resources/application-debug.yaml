@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/dvdrental
+    url: jdbc:postgresql://dvdrental-service-database:5432/dvdrental
     username: dvdrentaluser
     password: dvdrentalpassword
   jpa:
